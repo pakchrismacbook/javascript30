@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flex Panels Image Gallery</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+.panels{
+  display:flex;
+}
+.panel{
+  text-align:center;
+  flex:1;
+  background-size:cover; background-position:center;
+  min-height:100vh;
+  display:flex;
+  justify-content:center; align-items:center;
+  flex-direction:column;
+  transition:all .5s ease-in-out;
+}
+.panel.open{flex:7; font-size:40px;}
+.panel1{background-image:url(imgs/1.jpg); background-position:-210px;}
+.panel1.open{background-position:left;}
+.panel2{background-image:url(imgs/2.png);}
+.panel3{background-image:url(imgs/3.jpg); background-position:-460px;}
+.panel4{background-image:url(imgs/4.png);}
+.panel5{background-image:url(imgs/5.jpg); background-position:-850px;}
+.panel5.open{background-position:right;}
+.panel p{
+  display:flex;
+  flex:1 0 auto;
+  justify-content:center; align-items:center;
+  transition:.5s ease-in-out;
+}
+.panel p:first-of-type{transform:translateY(-100%);}
+.panel.open-active p:first-of-type{transform:translateY(0);font-size:20px;}
+.panel p:last-of-type{transform:translateY(100%);}
+.panel.open-active p:last-of-type{transform:translateY(0);font-size:20px;}
+
+</style>
+
+  </head>
+  <body>
+    <div class="panels">
+      <div class="panel panel1">
+        <p>Hey</p>
+        <p>Let's</p>
+        <p>Dance</p>
+      </div>
+      <div class="panel panel2">
+        <p>Give</p>
+        <p>Take</p>
+        <p>Receive</p>
+      </div>
+      <div class="panel panel3">
+        <p>Experience</p>
+        <p>It</p>
+        <p>Today</p>
+      </div>
+      <div class="panel panel4">
+        <p>Give</p>
+        <p>All</p>
+        <p>You</p>
+      </div>
+      <div class="panel panel5">
+        <p>Life</p>
+        <p>In</p>
+        <p>Motion</p>
+      </div>
+    </div>
+<script>
+const panels = document.querySelectorAll('.panel');
+function toggleOpen(){
+  this.classList.toggle('open');
+}
+function toggleActive(e){
+  if(e.propertyName.includes('flex')){
+    this.classList.toggle('open-active');
+  }
+}
+panels.forEach(panel=>panel.addEventListener('click', toggleOpen));
+panels.forEach(panel=>panel.addEventListener('transitionend', toggleActive));
+</script>
+  </body>
+</html>
