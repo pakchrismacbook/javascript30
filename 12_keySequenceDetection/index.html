@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Key Sequence Detection</title>
+</head>
+<body>
+	<script>
+		const pressed = [];
+		const code = 'chrispak';
+		window.addEventListener('keyup', e=>{
+			console.log(e.key);
+
+			pressed.push(e.key);
+			pressed.splice(-code.length-1, pressed.length-code.length);
+			if(pressed.join('').includes(code)){
+				console.log('secret code accessed!!');
+			}
+		});
+	</script>
+</body>
+</html>
