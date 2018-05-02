@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		const team = ['chris', 'jimmy', 'kevin'];
+
+		const players = team.slice(); // copies the team array into the players variable
+		const team2 = [].concat(team); // another way to copy an array
+		const team3 = [...team]; // the es6 spread operator way to copy an array
+		const team5 = Array.from(team); // an another method to copy an array
+
+
+		const person = {
+			name: 'chris',
+			age: 37,
+			gender: 'male'
+		};
+
+		// 1 level deep, look into clone deep function for a deeper cloning of an object, not too practical
+		const person2 = Object.assign({}, person, {name: 'aika', gender: 'female', number: 8});
+		const person3 = {...person};
+
+		console.log(person, person2, person3);
+
+	</script>
+</body>
+</html>

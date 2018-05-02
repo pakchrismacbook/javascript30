@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<ul id="bands"></ul>
+	<script>
+		const bands = ['BLACKPINK', 'Twice', 'GirlFriend', 'Red Velvet', 'MoMo Land', 'The Pixies', 'The Smiths', 'Apink'];
+
+		function strip(name){
+			return name.replace(/^(a |the |an)/i, '').trim();
+		}
+
+		// const sortBands = bands.sort((a,b)=>{
+		// 	// if(strip(a)>strip(b)) return 1;
+		// 	// else return -1;
+		// 	return strip(a)>strip(b) ? 1 : -1;
+		// });
+		const sortBands = bands.sort((a,b) => strip(a)>strip(b) ? 1 : -1);
+
+		document.querySelector('#bands').innerHTML = sortBands.map(band=>`<li>${band}</li>`).join('');
+	</script>
+</body>
+</html>
