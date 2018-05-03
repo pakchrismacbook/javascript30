@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sticky Nav</title>
+	<style>
+		*{ margin:0; padding:0; box-sizing:border-box; }
+		ul{list-style-type:none; text-align:center;padding-top:15px;}
+		li{display:inline-block; padding-right:10px;}
+		li:last-child{padding-right:0;}
+		a{text-decoration:none;  color:white;}
+		#head-frame{
+			width:100%; height:300px;
+			background-color:lightskyblue;
+		}
+		#nav-frame{
+			width:100%; height:50px;
+			background-color:darkslategray;
+			color:white;
+		}
+		#content-frame{height:400vh; padding:3rem;}
+		.fixed-nav #nav-frame{
+			position:fixed; top:0; left:0;
+		}
+	</style>
+</head>
+<body>
+	<div id="main-frame">
+
+		<div id="head-frame"></div>
+
+		<div id="nav-frame">
+			<ul>
+				<li><a href="#">link one</a></li>
+				<li><a href="#">link 2</a></li>
+				<li><a href="#">3rd link</a></li>
+				<li><a href="#">forth link</a></li>
+			</ul>
+		</div>
+
+		<div id="content-frame">
+			<p>Praesent bibendum nisl sed rhoncus interdum. Praesent maximus eu odio eu fermentum. Proin rhoncus, tellus non feugiat ullamcorper, libero tortor ornare augue, et mollis orci ipsum ac odio. Aenean eleifend nisl sollicitudin porttitor ultrices. Donec sed enim varius, lobortis mauris sit amet, feugiat quam. Etiam pharetra eu mauris sit amet iaculis. Quisque pharetra tellus in eleifend fermentum. Curabitur ex justo, vestibulum eu est tincidunt, laoreet tempus libero. In pulvinar mi nulla, ac ultrices sem commodo eu.</p>
+			<p>Etiam at imperdiet purus. Praesent a ante eget sapien hendrerit elementum. Sed molestie commodo leo, quis iaculis lectus placerat ultricies. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam porta, nibh sit amet tempus vestibulum, mi metus suscipit erat, sed tincidunt leo nulla eu arcu. Vivamus sodales lectus in metus porttitor eleifend quis id erat. Sed blandit purus erat. Nunc elementum scelerisque bibendum. Ut vehicula pharetra felis eget finibus.</p>
+		</div>
+
+		<script>
+			const nav = document.getElementById('nav-frame');
+			const navTop = nav.offsetTop;
+
+			function fixNav(){
+				// console.log(navTop)
+				if(window.scrollY >= navTop){
+					document.body.style.paddingTop = nav.offsetHeight+'px';
+					document.body.classList.add('fixed-nav');
+				} else{
+					document.body.style.paddingTop = 0;
+					document.body.classList.remove('fixed-nav');
+				}
+			}
+
+			window.addEventListener('scroll', fixNav);
+		</script>
+	</div>
+</body>
+</html>

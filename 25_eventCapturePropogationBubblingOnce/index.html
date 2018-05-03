@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event Capture, Propogation, Bubbling, and Once</title>
+	<style>
+		.one{width:100%; height:450px; background-color:papayawhip; position:relative;}
+		.two{width:75%; height:75%; background-color:lightskyblue; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+		.three{width:60%; height:60%; background-color:pink; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<div class="two">
+			<div class="three"></div>
+		</div>
+	</div>
+	<script>
+		const divs = document.querySelectorAll('div');
+
+		function logText(e){
+			console.log(this.classList.value)
+			e.stopPropogation(); // stop bubbling
+		}
+
+		divs.forEach(div=>div.addEventListener('click', logText, { capture: false, once: false }));
+		// capture is false by default. false returns three two one; capture true returns one two three
+		// true, runs down; false, runs up
+		// once: true, runs once then unbinds itself to event, much like removeEventListener()
+	</script>
+</body>
+</html>
