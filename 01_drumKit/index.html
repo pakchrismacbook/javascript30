@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Javascript Drum Kit</title>
+	<link href="https://fonts.googleapis.com/css?family=Slabo+13px" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<div class="keys">
@@ -62,7 +64,7 @@
 		}
 
 		function removeTransition(e){
-			console.log(e)
+			// console.log(e)
 			if(e.propertyName!=='transform') return; // skip if it is not a transform
 			this.classList.remove('playing');
 		}
